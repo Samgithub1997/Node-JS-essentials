@@ -1,0 +1,23 @@
+Node Js is a run time to run javascript outside browser. Built on V8 Chrome engine and C++ libuv, which gives it the ability to read files, networking and thread pooling features. It is single threaded and asynchronous (non blocking I/O - I/O does not wait) which makes it fast at performance.\
+
+Node uses event loop to handle all async operations. 
+Timers: setTimeout, setInterval\
+Pending callbacks
+Idle/Prepare -> Intervals
+Check : setImmediate
+If no timer or operations are pending, Node exits automatically else it keeps looping.
+
+Phase - Key Action - Usage in real apps
+Timers - Run setTimeout/setInterval	 - Delays, repeated polling (e.g., stock prices)
+Pending - Callbacks - Handle low-level errors	Rarely touch directly
+Idle, Prepare - Internal Node stuff
+Poll - Wait for incoming I/O - Node handles under-the-hood
+Check - Run setImmediate callbacks - Prioritized execution after I/O
+Close Callbacks - Handle socket/file closes	- Cleanup (DB, files, memory)
+
+Situation -> Use
+Regular API polling	-> setInterval
+Delayed retry or timeout -> setTimeout
+Want to run after heavy I/O (e.g., fs.readFile) -> setImmediate
+Internal system errors -> Node handles it (Pending Callbacks)
+Resource cleanup (socket close) -> socket.on('close')
