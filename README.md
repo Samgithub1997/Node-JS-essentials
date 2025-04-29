@@ -1,4 +1,4 @@
-# Node-JS-Zero-to-Hundred
+# Node-JS-Essentials
 
 Important concepts and Working prototype projects
 
